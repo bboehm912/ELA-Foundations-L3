@@ -11,6 +11,10 @@ body{margin:0;padding:20px;font:16px 'Segoe UI',Arial,sans-serif;color:var(--dar
 .container{max-width:980px;margin:auto}
 .card{background:#fff;border-radius:12px;padding:24px;margin-bottom:20px;box-shadow:0 4px 12px #0000000d}
 .header{border-top:5px solid var(--green)}
+.header-main{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px}
+.logo-box{display:flex;align-items:center;gap:16px}
+.brand-logo{max-height:55px;width:auto;object-fit:contain}
+.brand-stamp{max-height:55px;width:auto;object-fit:contain}
 h2,h3{margin-top:0}
 .muted{color:var(--muted)}
 .tabs{display:flex;gap:10px;margin-bottom:20px}
@@ -20,8 +24,8 @@ h2,h3{margin-top:0}
 .control:disabled{background:#cbd5e1;border-color:#cbd5e1;color:#64748b;cursor:not-allowed;opacity:0.6}
 .tab{display:none}
 .tab.active{display:block}
-.bell{padding:14px 18px;background:var(--pale);border-left:4px solid var(--green);display:flex;justify-content:space-between;align-items:center;border-radius:6px;gap:12px}
-.stage{min-height:360px;background:#f8fafc;border:1px solid var(--border);border-radius:10px;padding:24px}
+.bell{padding:16px 20px;background:var(--pale);border-left:5px solid var(--green);display:flex;justify-content:space-between;align-items:center;border-radius:6px;gap:12px}
+.stage{min-height:380px;background:#f8fafc;border:1px solid var(--border);border-radius:10px;padding:24px}
 .slide{display:none}
 .slide.active{display:block}
 .slidehead{display:flex;justify-content:space-between;align-items:center;border-bottom:2px solid var(--green);padding-bottom:10px}
@@ -35,7 +39,7 @@ input,textarea,select{width:100%;padding:10px;border:1px solid var(--border);bor
 .submit{width:100%;background:var(--green);color:#fff;border:0;border-radius:8px;padding:14px;font-weight:bold;font-size:1em;cursor:pointer}
 
 @media(max-width:600px){
-  .tabs,.bell,.resource{flex-direction:column;align-items:stretch}
+  .tabs,.bell,.resource,.header-main{flex-direction:column;align-items:stretch}
   .tabs button{width:100%}
 }
 
@@ -52,8 +56,18 @@ input,textarea,select{width:100%;padding:10px;border:1px solid var(--border);bor
 <body>
 <main class="container">
   <header class="card header">
-    <h2>ELA Foundations</h2>
-    <p class="muted">Unit 1: Foundational Decoding &amp; Word Analysis — Day 3: CVC Basics: Medial Vowel Substitution</p>
+    <div class="header-main">
+      <div class="logo-box">
+        <img src="chisholm_logo.png" alt="Chisholm Logo" class="brand-logo">
+        <div>
+          <h2 style="margin:0;font-size:1.4rem;">ELA Foundations Intervention</h2>
+          <p class="muted" style="margin:2px 0 0 0;">Unit 1: Foundational Decoding &amp; Word Analysis — Day 3: Medial Vowel Substitution</p>
+        </div>
+      </div>
+      <div>
+        <img src="boehm-stamp.svg" alt="Boehm Stamp" class="brand-stamp">
+      </div>
+    </div>
   </header>
   
   <nav class="tabs">
@@ -71,7 +85,7 @@ input,textarea,select{width:100%;padding:10px;border:1px solid var(--border);bor
       <button class="control" id="shuffle">Shuffle</button>
     </div>
     <div style="display:flex;justify-content:space-between;align-items:center;margin:16px 0 8px 0">
-      <h3 style="margin:0">Unit 1: Foundational Decoding &amp; Word Analysis</h3>
+      <h3 style="margin:0">Instructional Deck &amp; Guided Practice</h3>
       <span id="count" class="badge"></span>
     </div>
     <div id="stage" class="stage"></div>
@@ -83,7 +97,7 @@ input,textarea,select{width:100%;padding:10px;border:1px solid var(--border);bor
   
   <section id="resources" class="card tab">
     <h3>Lesson Resource &amp; Reference Hub</h3>
-    <p class="muted">Access official course references below.</p>
+    <p class="muted">Access official course references, printable rubrics, and diagnostic matrices below.</p>
     <div id="resourceList"></div>
   </section>
   
@@ -96,29 +110,137 @@ input,textarea,select{width:100%;padding:10px;border:1px solid var(--border);bor
 <script>
 const data = {
   bellringers: [
-    "Say the word 'CAT' aloud. If you change the middle sound from /æ/ to /o/, what new word do you make? How does your mouth position change?",
-    "Listen to these three words: PIN, PAN, PEN. What single letter position changes in each word, and how does it change the word's meaning?",
-    "Scenario: A reader pronounces 'LUG' as 'LOG'. What specific middle vowel sound did they misread, and how would you correct them?",
-    "Name the 5 short vowel sounds (/a/, /e/, /i/, /o/, /u/) and give one CVC example for each."
+    "Say the word 'CAT' aloud. If you change the middle sound from /æ/ to /o/, what new word do you make? How does your mouth and tongue position shift?",
+    "Listen to these three words: PIN, PAN, PEN. What single letter position changes in each word, and how does that single phoneme shift transform the definition?",
+    "Diagnostic Scenario: A middle school reader pronounces 'LUG' as 'LOG'. What specific short vowel phoneme did they misapply, and what articulatory cue would you provide to correct them?",
+    "Name all 5 short vowel phonemes (/æ/, /ɛ/, /ɪ/, /ɑ/, /ʌ/) and provide one clear CVC example for each sound."
   ],
   slides: [
-    {title:'1. Lesson Overview & Core Objectives',standard:'MN ELA 7.1.4.4 / 8.1.4.4',bullets:['Analyze how altering medial vowel phonemes reshapes CVC word structure.','Isolate middle vowel sounds to improve word analysis.','Practice structured one-on-one diagnostic conversations.'],callout:'A single vowel swap changes the auditory and semantic identity of a word.'},
-    {title:'2. CVC Structure & Phoneme Isolation',standard:'MN ELA 7.1.4.4 / 8.1.4.4',bullets:['CVC means consonant-vowel-consonant.','Segment words into individual sound units: /k/ - /æ/ - /t/.','Initial and final consonants remain constant during substitution.'],callout:'The medial vowel is the vocal anchor of a CVC word.'},
-    {title:'3. Isolating the Medial Vowel Sound',standard:'MN ELA 7.1.4.4 / 8.1.4.4',bullets:['Stretch the middle sound to isolate it.','Observe tongue height and lip rounding.','Say the isolated phoneme aloud during peer checks.'],callout:'Elongating the middle vowel makes identification easier.'},
-    {title:'4. Short Vowel Phoneme Contrast',standard:'MN ELA 7.1.4.4 / 8.1.4.4',bullets:['Compare short A in BAT with short E in BET.','Contrast short I in BIT with short O in BOT.','Recognize the relaxed central position of short U in BUT.'],callout:'Small changes in mouth placement produce different vowel sounds.'},
-    {title:'5. Medial Substitution: CAT to COT',standard:'MN ELA 7.1.4.4 / 8.1.4.4',bullets:['CAT is /k/ /æ/ /t/.','Replace /æ/ with short O while keeping /k/ and /t/ fixed.','COT has a new sound pattern and meaning.'],callout:'Changing one medial vowel transforms the word.'},
-    {title:'6. Medial Substitution: COT to CUT',standard:'MN ELA 7.1.4.4 / 8.1.4.4',bullets:['COT is /k/ /ɑ/ /t/.','Swap /ɑ/ for short U.','CUT forms a new action word.'],callout:'Vowel substitution changes both pronunciation and meaning.'},
-    {title:'7. One-on-One Peer Diagnostic',standard:'MN ELA 7.3.1.1 / 8.3.1.1',bullets:['Partner A reads target CVC pairs aloud.','Partner B listens for precise medial phonemes.','Discuss errors using descriptive feedback.'],callout:'Oral checks reveal decoding errors in real time.'},
-    {title:'8. Word Chain Challenge: BUG → BAG → BEG → BIG',standard:'MN ELA 7.1.4.4 / 8.1.4.4',bullets:['Substitute one medial vowel at each step.','Keep the beginning and ending consonants stable.','Decode every link aloud with a partner.'],callout:'Multi-step substitutions test speed and phonological precision.'},
-    {title:'9. Real and Nonsense Word Analysis',standard:'MN ELA 7.1.4.4 / 8.1.4.4',bullets:['Read real words such as LOG and LUG.','Decode pseudowords such as YEG and ZOP.','Apply sound-symbol rules regardless of familiarity.'],callout:'Pseudowords show whether a reader is truly decoding.'},
-    {title:'10. Guided Diagnostic Discussion',standard:'MN ELA 7.3.1.1 / 8.3.1.1',bullets:['Explain how changing PIN to PAN changes sound and meaning.','Describe tongue and lip shifts.','Ask which vowel sound was substituted.'],callout:'Explaining sound mechanics deepens phonological comprehension.'},
-    {title:'11. Rapid-Fire Vowel Swap',standard:'MN ELA 7.3.1.1 / 8.3.1.1',bullets:['A partner calls out a word and target vowel.','Produce the new word immediately.','Self-correct and track response time.'],callout:'Rapid responses indicate automatic medial phoneme processing.'},
-    {title:'12. Diagnostic Reflection & Checkpoint',standard:'MN ELA 7.3.1.1 / 8.3.1.1',bullets:['Complete the Student Work Checkpoint.','Record your partner and discussion summary.','Select a mastery level and print your work.'],callout:'Written reflection consolidates oral diagnostic learning.'}
+    {
+      title: '1. Lesson Overview & Core Objectives',
+      standard: 'MN ELA 7.1.4.4 / 8.1.4.4',
+      bullets: [
+        'Analyze how altering medial vowel phonemes fundamentally reshapes CVC acoustic structure and semantic meaning.',
+        'Isolate middle vowel sounds aloud to build automaticity in structural word analysis and multisyllabic decoding frameworks.',
+        'Engage in structured 1-on-1 diagnostic peer checks to provide real-time articulatory feedback.'
+      ],
+      callout: 'A single vowel swap alters both the auditory profile and the complete semantic identity of a word.'
+    },
+    {
+      title: '2. CVC Structure & Phoneme Isolation Mechanics',
+      standard: 'MN ELA 7.1.4.4 / 8.1.4.4',
+      bullets: [
+        'CVC Architecture: Consonant Onset + Medial Vowel Nucleus + Consonant Coda.',
+        'Segment words into discrete acoustic units: /k/ - /æ/ - /t/.',
+        'Maintain absolute stability in the initial onset (/k/) and final coda (/t/) during medial vowel swaps.'
+      ],
+      callout: 'The medial vowel serves as the acoustic anchor of every CVC syllabic unit.'
+    },
+    {
+      title: '3. Isolating & Articulating Medial Vowel Core',
+      standard: 'MN ELA 7.1.4.4 / 8.1.4.4',
+      bullets: [
+        'Continuous Vocalization: Stretch and hold the middle sound (e.g., Caaa-at) to isolate the target phoneme.',
+        'Monitor physical vocal traits: Notice jaw height, tongue elevation, and lip rounding.',
+        'Explicitly state the target IPA phoneme aloud prior to synthesizing the full word.'
+      ],
+      callout: 'Elongating the medial vowel core highlights subtle shifts in tongue and jaw position.'
+    },
+    {
+      title: '4. Short Vowel Phoneme Contrast Matrix',
+      standard: 'MN ELA 7.1.4.4 / 8.1.4.4',
+      bullets: [
+        'Contrast Short A (/æ/ in BAT) with Short E (/ɛ/ in BET).',
+        'Contrast Short I (/ɪ/ in BIT) with Short O (/ɑ/ in BOT).',
+        'Examine the relaxed, neutral central vocal position of Short U (/ʌ/ in BUT).'
+      ],
+      callout: 'Micro-adjustments in mouth geometry produce entirely different phonemic outputs.'
+    },
+    {
+      title: '5. Medial Substitution Analysis: CAT → COT',
+      standard: 'MN ELA 7.1.4.4 / 8.1.4.4',
+      bullets: [
+        'Base Form: CAT decomposes into /k/ /æ/ /t/ (Feline animal).',
+        'Substitution Step: Replace short /æ/ with short O (/ɑ/) while holding onset /k/ and coda /t/ static.',
+        'Target Output: COT (/kɑt/) — Meaning shifts to a small portable bed.'
+      ],
+      callout: 'Swapping a single phoneme instantly alters word class, definition, and phonetic representation.'
+    },
+    {
+      title: '6. Sequential Substitution Shift: COT → CUT',
+      standard: 'MN ELA 7.1.4.4 / 8.1.4.4',
+      bullets: [
+        'Base Form: COT (/kɑt/).',
+        'Substitution Step: Swap short O (/ɑ/) for short U (/ʌ/).',
+        'Target Output: CUT (/kʌt/) — Creates an active verb meaning to divide with a sharp edge.'
+      ],
+      callout: 'Tracking vowel shifts in sequence establishes strong cognitive pathways for decoding.'
+    },
+    {
+      title: '7. One-on-One Peer Diagnostic Protocol',
+      standard: 'MN ELA 7.3.1.1 / 8.3.1.1',
+      bullets: [
+        'Evaluator Workflow: Partner A reads target CVC word chains from the Diagnostic Matrix.',
+        'Observer Workflow: Partner B monitors for exact phonemic substitution and immediate self-correction.',
+        'Verbal Feedback Loop: Provide specific descriptive feedback on mouth placement and sound accuracy.'
+      ],
+      callout: 'Oral peer checks pinpoint specific vowel confusion before it impacts reading comprehension.'
+    },
+    {
+      title: '8. Advanced Word Chain Matrix: BUG → BAG → BEG → BIG',
+      standard: 'MN ELA 7.1.4.4 / 8.1.4.4',
+      bullets: [
+        'Step 1: BUG (/bʌɡ/) → Swap /ʌ/ to Short A → BAG (/bæɡ/).',
+        'Step 2: BAG (/bæɡ/) → Swap /æ/ to Short E → BEG (/bɛɡ/).',
+        'Step 3: BEG (/bɛɡ/) → Swap /ɛ/ to Short I → BIG (/bɪɡ/).'
+      ],
+      callout: 'Multi-step chains build reading stamina, phonemic working memory, and decoding speed.'
+    },
+    {
+      title: '9. Pseudoword (Nonsense Word) Diagnostic Checks',
+      standard: 'MN ELA 7.1.4.4 / 8.1.4.4',
+      bullets: [
+        'Real Word Contrast: LOG (/lɑɡ/) vs. LUG (/lʌɡ/).',
+        'Pseudoword Analysis: Decode phonetically valid nonsense words like ZOP (/zɑp/) or YEG (/jɛɡ/).',
+        'Diagnostic Value: Pseudowords isolate pure decoding capacity without sight-word memorization.'
+      ],
+      callout: 'Pseudoword fluency proves whether a middle school student is truly decoding sound-by-sound.'
+    },
+    {
+      title: '10. Guided Socratic Diagnostic Discussion',
+      standard: 'MN ELA 7.3.1.1 / 8.3.1.1',
+      bullets: [
+        'Articulate Mechanics: Explain precisely how changing PIN (/pɪn/) to PAN (/pæn/) changes sound and meaning.',
+        'Descriptive Vocabulary: Use terms like "onset", "medial vowel core", "coda", and "phonetic shift".',
+        'Metacognitive Reflection: Discuss which vowel sounds required the most conscious vocal effort.'
+      ],
+      callout: 'Explaining linguistic mechanics aloud solidifies deep phonological understanding.'
+    },
+    {
+      title: '11. Automated Rapid-Fire Phoneme Swapping',
+      standard: 'MN ELA 7.3.1.1 / 8.3.1.1',
+      bullets: [
+        'Prompt & Response: Partner calls out a target base word and new vowel target (e.g., "HOT, change to Short A").',
+        'Execution: Student must vocalize the new word ("HAT") within 1.5 seconds.',
+        'Automaticity Goal: Eliminate conscious hesitations during vowel phoneme processing.'
+      ],
+      callout: 'Sub-second oral response times signal true orthographic mapping and automaticity.'
+    },
+    {
+      title: '12. Diagnostic Reflection & Work Checkpoint',
+      standard: 'MN ELA 7.3.1.1 / 8.3.1.1',
+      bullets: [
+        'Complete all required entries on the Student Work Checkpoint tab.',
+        'Record partner name, qualitative diagnostic notes, and observed performance level (Levels 1–4).',
+        'Submit the completed report to the Red Collection Basket.'
+      ],
+      callout: 'Documenting peer diagnostic insights connects oral practice to accountability.'
+    }
   ],
   resources: [
     ['MN ELA CVC Word Analysis Matrix', 'mn_cvc_word_analysis.pdf'],
     ['One-on-One Oral Decoding Diagnostic Guide', 'oral_decoding_diagnostic_guide.pdf'],
-    ['CVC Word Pairs', 'cvc_word_pairs.pdf']
+    ['CVC Word Pairs Flashcard Reference Sheet', 'cvc_word_pairs.pdf']
   ]
 };
 
@@ -130,11 +252,13 @@ function render() {
   $('stage').innerHTML = `
     <article class="slide active">
       <div class="slidehead">
-        <h3>${s.title}</h3>
+        <h3 style="margin:0">${s.title}</h3>
         <span class="badge">${s.standard}</span>
       </div>
-      <ul style="margin-top:16px;line-height:1.6">${s.bullets.map(x => `<li>${x}</li>`).join('')}</ul>
-      <div class="callout"><b>Key Takeaway:</b> ${s.callout}</div>
+      <ul style="margin-top:18px;line-height:1.75;font-size:1.05rem;">
+        ${s.bullets.map(x => `<li style="margin-bottom:8px;">${x}</li>`).join('')}
+      </ul>
+      <div class="callout"><b>Key Pedagogical Takeaway:</b> ${s.callout}</div>
     </article>
   `;
   $('count').textContent = `Slide ${current + 1} of ${data.slides.length}`;
@@ -156,7 +280,7 @@ data.resources.forEach(r => {
   `;
 });
 
-// Event Listeners
+// Controls
 $('prev').onclick = () => { if (current > 0) { current--; render(); } };
 $('next').onclick = () => { if (current < data.slides.length - 1) { current++; render(); } };
 $('shuffle').onclick = prompt;
@@ -172,30 +296,30 @@ document.querySelectorAll('[data-tab]').forEach(b => {
 // Build Form
 const fields = [
   ['Student Name', 'text'],
-  ['Diagnostic Partner / Instructor Name', 'text'],
-  ['Date', 'date'],
-  ['Explain how changing the medial vowel in PIN to A changes sound and meaning.', 'text'],
-  ['Diagnostic Discussion Notes', 'textarea'],
-  ['Decoding Benchmark Rubric', 'select']
+  ['Diagnostic Partner / Evaluator Name', 'text'],
+  ['Session Date', 'date'],
+  ['Explain how changing the medial vowel in PIN (/ɪ/) to Short A (/æ/) alters both sound mechanics and definition.', 'text'],
+  ['Diagnostic Observation Notes & Error Tracking', 'textarea'],
+  ['Oral Decoding Mastery Level (MN ELA Standard Alignment)', 'select']
 ];
 
 $('checkpoint').innerHTML = fields.map((f, i) => `
   <div class="field">
     <label for="field_${i}">${f[0]}</label>
     ${f[1] === 'textarea' 
-      ? `<textarea id="field_${i}" rows="4" required></textarea>` 
+      ? `<textarea id="field_${i}" rows="4" placeholder="Record specific phonetic errors or articulatory shifts observed..." required></textarea>` 
       : f[1] === 'select' 
       ? `<select id="field_${i}" required>
-          <option value="">-- Select Level --</option>
-          <option>Level 1 - Needs Support</option>
-          <option>Level 2 - Developing</option>
-          <option>Level 3 - Proficient</option>
-          <option>Level 4 - Advanced</option>
+          <option value="">-- Select Rubric Mastery Level --</option>
+          <option>Level 1 - Needs Support (Frequent sound confusion; slow decoding)</option>
+          <option>Level 2 - Developing (Identifies shifts with teacher/peer prompting)</option>
+          <option>Level 3 - Proficient (Independently decodes & swaps medial vowels smoothly)</option>
+          <option>Level 4 - Advanced (Immediate automaticity across real & pseudowords)</option>
          </select>`
       : `<input id="field_${i}" type="${f[1]}" required>`
     }
   </div>
-`).join('') + '<button class="submit" type="submit">Print this page and turn into the Red Basket!</button>';
+`).join('') + '<button class="submit" type="submit">Print Completed Work Checkpoint for Red Basket</button>';
 
 $('checkpoint').onsubmit = e => {
   e.preventDefault();
