@@ -11,10 +11,14 @@ body{margin:0;padding:20px;font:16px 'Segoe UI',Arial,sans-serif;color:var(--dar
 .container{max-width:980px;margin:auto}
 .card{background:#fff;border-radius:12px;padding:24px;margin-bottom:20px;box-shadow:0 4px 12px #0000000d}
 .header{border-top:5px solid var(--green)}
-.header-main{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px}
-.logo-box{display:flex;align-items:center;gap:16px}
+.header-card{width:100%}
+.header-flex{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px}
+.header-left{display:flex;align-items:center;gap:16px}
+.logo-box{display:flex;align-items:center}
 .brand-logo{max-height:55px;width:auto;object-fit:contain}
-.brand-stamp{max-height:55px;width:auto;object-fit:contain}
+.stamp-container{position:relative;width:110px;height:110px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.stamp-svg{width:110px;height:110px}
+.stamp-photo{position:absolute;width:60px;height:60px;border-radius:50%;object-fit:cover;border:2px solid var(--green)}
 h2,h3{margin-top:0}
 .muted{color:var(--muted)}
 .tabs{display:flex;gap:10px;margin-bottom:20px}
@@ -39,7 +43,8 @@ input,textarea,select{width:100%;padding:10px;border:1px solid var(--border);bor
 .submit{width:100%;background:var(--green);color:#fff;border:0;border-radius:8px;padding:14px;font-weight:bold;font-size:1em;cursor:pointer}
 
 @media(max-width:600px){
-  .tabs,.bell,.resource,.header-main{flex-direction:column;align-items:stretch}
+  .tabs,.bell,.resource,.header-flex{flex-direction:column;align-items:stretch}
+  .header-left{flex-direction:column;align-items:flex-start}
   .tabs button{width:100%}
 }
 
@@ -56,47 +61,37 @@ input,textarea,select{width:100%;padding:10px;border:1px solid var(--border);bor
 <body>
 <main class="container">
   <header class="card header">
-    <div class="header-main">
-      <div class="logo-box">
-        <img src="chisholm_logo.png" alt="Chisholm Logo" class="brand-logo">
-        <div>
-          <h2 style="margin:0;font-size:1.4rem;">ELA Foundations Intervention</h2>
-          <p class="muted" style="margin:2px 0 0 0;">Unit 1: Foundational Decoding &amp; Word Analysis — Day 3: Medial Vowel Substitution</p>
+    <div class="header-card">
+      <div class="header-flex">
+        <div class="header-left">
+          <div class="logo-box">
+            <img src="chisholm_logo.png" alt="Chisholm Logo" class="brand-logo" onerror="this.onerror=null; this.parentNode.innerHTML='<div style=\'background:#15803d;color:#fff;padding:10px 14px;font-weight:bold;border-radius:6px;\'>CHS</div>';">
+          </div>
+          <div>
+            <h2 style="margin:0;font-size:1.35em;">ELA Foundations Intervention</h2>
+            <p class="muted" style="margin:4px 0 0 0;font-size:0.9em;">Unit 1: Foundational Decoding &amp; Word Analysis — Day 3: Medial Vowel Substitution</p>
+          </div>
         </div>
-      </div>
-      <div>
-        <!-- Header Card -->
-  <div class="header-card">
-    <div class="header-flex">
-      <div class="header-left">
-        <div class="logo-box">
-          <img src="Chisholmlogo.png" alt="Chisholm Logo" onerror="this.onerror=null; this.parentNode.innerHTML='<div style=\'background:#15803d;color:#fff;padding:12px;font-weight:bold;border-radius:6px;\'>CHS</div>';" />
-        </div>
-        <div>
-          <h2 style="margin: 0; font-size: 1.35em;">ELA Foundations — Week 1, Day 1</h2>
-          <p style="margin: 4px 0 0 0; color: var(--text-muted); font-size: 0.9em;">Course Orientation, Diagnostic Assessment &amp; O.T.I.S. Studio Framework</p>
-        </div>
-      </div>
 
-      <!-- Stamp Badge with Boehm Photo Centered Inside -->
-      <div class="stamp-container">
-        <img src="boehm_photo.jpg" alt="Mr. Boehm" class="stamp-photo" onerror="this.style.display='none';" />
-        <svg class="stamp-svg" viewBox="0 0 200 200">
-          <path id="textPathTop" d="M 25,100 A 75,75 0 1,1 175,100" fill="none" />
-          <path id="textPathBottom" d="M 175,100 A 75,75 0 0,1 25,100" fill="none" />
-          <circle cx="100" cy="100" r="95" fill="none" stroke="#15803d" stroke-width="4" />
-          <circle cx="100" cy="100" r="82" fill="none" stroke="#15803d" stroke-width="2" />
-          <circle cx="100" cy="100" r="58" fill="none" stroke="#15803d" stroke-width="2" stroke-dasharray="4,4" />
-          <text font-size="13" font-weight="bold" fill="#15803d" letter-spacing="2">
-            <textPath href="#textPathTop" startOffset="50%" text-anchor="middle">THE BOEHM CLASSROOM ★</textPath>
-          </text>
-          <text font-size="13" font-weight="bold" fill="#15803d" letter-spacing="2">
-            <textPath href="#textPathBottom" startOffset="50%" text-anchor="middle">CHISHOLM HIGH SCHOOL</textPath>
-          </text>
-        </svg>
+        <div class="stamp-container">
+          <img src="boehm_photo.jpg" alt="Mr. Boehm" class="stamp-photo" onerror="this.style.display='none';">
+          <svg class="stamp-svg" viewBox="0 0 200 200">
+            <path id="textPathTop" d="M 25,100 A 75,75 0 1,1 175,100" fill="none"/>
+            <path id="textPathBottom" d="M 175,100 A 75,75 0 0,1 25,100" fill="none"/>
+            <circle cx="100" cy="100" r="95" fill="none" stroke="#15803d" stroke-width="4"/>
+            <circle cx="100" cy="100" r="82" fill="none" stroke="#15803d" stroke-width="2"/>
+            <circle cx="100" cy="100" r="58" fill="none" stroke="#15803d" stroke-width="2" stroke-dasharray="4,4"/>
+            <text font-size="13" font-weight="bold" fill="#15803d" letter-spacing="2">
+              <textPath href="#textPathTop" startOffset="50%" text-anchor="middle">THE BOEHM CLASSROOM ★</textPath>
+            </text>
+            <text font-size="13" font-weight="bold" fill="#15803d" letter-spacing="2">
+              <textPath href="#textPathBottom" startOffset="50%" text-anchor="middle">CHISHOLM HIGH SCHOOL</textPath>
+            </text>
+          </svg>
+        </div>
       </div>
     </div>
-  </div>
+  </header>
   
   <nav class="tabs">
     <button class="active" data-tab="deck">Deck</button>
