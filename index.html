@@ -6,30 +6,204 @@
 <title>ELA Foundations | Day 3: CVC Basics</title>
 <style>
 :root{--green:#15803d;--dark:#0f172a;--muted:#475569;--border:#cbd5e1;--pale:#f0fdf4}
-*{box-sizing:border-box}body{margin:0;padding:20px;font:16px Segoe UI,Arial,sans-serif;color:var(--dark);background:#f8fafc}.container{max-width:980px;margin:auto}.card{background:#fff;border-radius:12px;padding:24px;margin-bottom:20px;box-shadow:0 4px 12px #0000000d}.header{border-top:5px solid var(--green)}h2,h3{margin-top:0}.muted{color:var(--muted)}.tabs{display:flex;gap:10px;margin-bottom:20px}.tabs button,.control{border:1px solid var(--border);border-radius:7px;padding:12px 18px;font-weight:700;cursor:pointer;background:#fff}.tabs button{flex:1}.tabs .active,.control{background:var(--green);color:#fff;border-color:var(--green)}.tab{display:none}.tab.active{display:block}.bell{padding:14px 18px;background:var(--pale);border-left:4px solid var(--green);display:flex;justify-content:space-between;align-items:center;border-radius:6px}.stage{min-height:360px;background:#f8fafc;border:1px solid var(--border);border-radius:10px;padding:24px}.slide{display:none}.slide.active{display:block}.slidehead{display:flex;justify-content:space-between;border-bottom:2px solid var(--green);padding-bottom:10px}.badge{background:#dcfce7;color:#166534;padding:4px 10px;border-radius:6px;font-size:.8em;font-weight:bold}.callout{margin-top:20px;padding:14px;background:var(--pale);border-left:4px solid var(--green)}.controls{display:flex;justify-content:space-between;margin-top:18px}.resource{padding:16px;border:1px solid var(--border);border-left:4px solid var(--green);margin:12px 0;border-radius:7px;display:flex;justify-content:space-between;gap:12px}.field{margin:18px 0;padding-bottom:16px;border-bottom:1px solid #e2e8f0}label{display:block;font-weight:bold;margin-bottom:6px}input,textarea,select{width:100%;padding:10px;border:1px solid var(--border);border-radius:6px}.submit{width:100%;background:var(--green);color:#fff;border:0;border-radius:8px;padding:14px;font-weight:bold;font-size:1em;cursor:pointer}@media(max-width:600px){.tabs,.bell,.resource{flex-direction:column}.tabs button{width:100%}}
+*{box-sizing:border-box}
+body{margin:0;padding:20px;font:16px 'Segoe UI',Arial,sans-serif;color:var(--dark);background:#f8fafc}
+.container{max-width:980px;margin:auto}
+.card{background:#fff;border-radius:12px;padding:24px;margin-bottom:20px;box-shadow:0 4px 12px #0000000d}
+.header{border-top:5px solid var(--green)}
+h2,h3{margin-top:0}
+.muted{color:var(--muted)}
+.tabs{display:flex;gap:10px;margin-bottom:20px}
+.tabs button,.control{border:1px solid var(--border);border-radius:7px;padding:12px 18px;font-weight:700;cursor:pointer;background:#fff;text-decoration:none;display:inline-block;text-align:center}
+.tabs button{flex:1}
+.tabs .active,.control{background:var(--green);color:#fff;border-color:var(--green)}
+.control:disabled{background:#cbd5e1;border-color:#cbd5e1;color:#64748b;cursor:not-allowed;opacity:0.6}
+.tab{display:none}
+.tab.active{display:block}
+.bell{padding:14px 18px;background:var(--pale);border-left:4px solid var(--green);display:flex;justify-content:space-between;align-items:center;border-radius:6px;gap:12px}
+.stage{min-height:360px;background:#f8fafc;border:1px solid var(--border);border-radius:10px;padding:24px}
+.slide{display:none}
+.slide.active{display:block}
+.slidehead{display:flex;justify-content:space-between;align-items:center;border-bottom:2px solid var(--green);padding-bottom:10px}
+.badge{background:#dcfce7;color:#166534;padding:4px 10px;border-radius:6px;font-size:.8em;font-weight:bold}
+.callout{margin-top:20px;padding:14px;background:var(--pale);border-left:4px solid var(--green);border-radius:0 6px 6px 0}
+.controls{display:flex;justify-content:space-between;margin-top:18px}
+.resource{padding:16px;border:1px solid var(--border);border-left:4px solid var(--green);margin:12px 0;border-radius:7px;display:flex;justify-content:space-between;align-items:center;gap:12px}
+.field{margin:18px 0;padding-bottom:16px;border-bottom:1px solid #e2e8f0}
+label{display:block;font-weight:bold;margin-bottom:6px}
+input,textarea,select{width:100%;padding:10px;border:1px solid var(--border);border-radius:6px;font:inherit}
+.submit{width:100%;background:var(--green);color:#fff;border:0;border-radius:8px;padding:14px;font-weight:bold;font-size:1em;cursor:pointer}
+
+@media(max-width:600px){
+  .tabs,.bell,.resource{flex-direction:column;align-items:stretch}
+  .tabs button{width:100%}
+}
+
+@media print {
+  body{background:#fff;padding:0}
+  .container{max-width:100%}
+  .header,.tabs,#deck,#resources,.submit{display:none !important}
+  #form,.card{box-shadow:none;border:none;padding:0}
+  .tab.active{display:block !important}
+  input,textarea,select{border:1px solid #000}
+}
 </style>
 </head>
-<body><main class="container">
-<header class="card header"><h2>ELA Foundations</h2><p class="muted">Unit 1: Foundational Decoding &amp; Word Analysis — Day 3: CVC Basics: Medial Vowel Substitution</p></header>
-<nav class="tabs"><button class="active" data-tab="deck">Deck</button><button data-tab="resources">Resource Hub</button><button data-tab="form">Student Work Checkpoint</button></nav>
-<section id="deck" class="card tab active"><div class="bell"><div><b>Daily Bellringer Writing Prompt</b><p id="prompt"><i>Loading prompt...</i></p></div><button class="control" id="shuffle">Shuffle</button></div><h3>Unit 1: Foundational Decoding &amp; Word Analysis <span id="count" class="badge"></span></h3><div id="stage" class="stage"></div><div class="controls"><button class="control" id="prev">Previous</button><button class="control" id="next">Next</button></div></section>
-<section id="resources" class="card tab"><h3>Lesson Resource &amp; Reference Hub</h3><p class="muted">Access official course references below.</p><div id="resourceList"></div></section>
-<section id="form" class="card tab"><h3>Student Work Checkpoint &amp; Reflection</h3><form id="checkpoint"></form></section>
+<body>
+<main class="container">
+  <header class="card header">
+    <h2>ELA Foundations</h2>
+    <p class="muted">Unit 1: Foundational Decoding &amp; Word Analysis — Day 3: CVC Basics: Medial Vowel Substitution</p>
+  </header>
+  
+  <nav class="tabs">
+    <button class="active" data-tab="deck">Deck</button>
+    <button data-tab="resources">Resource Hub</button>
+    <button data-tab="form">Student Work Checkpoint</button>
+  </nav>
+  
+  <section id="deck" class="card tab active">
+    <div class="bell">
+      <div>
+        <b>Daily Bellringer Writing Prompt</b>
+        <p id="prompt"><i>Loading prompt...</i></p>
+      </div>
+      <button class="control" id="shuffle">Shuffle</button>
+    </div>
+    <div style="display:flex;justify-content:space-between;align-items:center;margin:16px 0 8px 0">
+      <h3 style="margin:0">Unit 1: Foundational Decoding &amp; Word Analysis</h3>
+      <span id="count" class="badge"></span>
+    </div>
+    <div id="stage" class="stage"></div>
+    <div class="controls">
+      <button class="control" id="prev">Previous</button>
+      <button class="control" id="next">Next</button>
+    </div>
+  </section>
+  
+  <section id="resources" class="card tab">
+    <h3>Lesson Resource &amp; Reference Hub</h3>
+    <p class="muted">Access official course references below.</p>
+    <div id="resourceList"></div>
+  </section>
+  
+  <section id="form" class="card tab">
+    <h3>Student Work Checkpoint &amp; Reflection</h3>
+    <form id="checkpoint"></form>
+  </section>
 </main>
+
 <script>
-const data={bellringers:["Say the word 'CAT' aloud. If you change the middle sound from /æ/ to /o/, what new word do you make? How does your mouth position change?","Listen to these three words: PIN, PAN, PEN. What single letter position changes in each word, and how does it change the word's meaning?","Scenario: A reader pronounces 'LUG' as 'LOG'. What specific middle vowel sound did they misread, and how would you correct them?","Name the 5 short vowel sounds (/a/, /e/, /i/, /o/, /u/) and give one CVC example for each."],slides:[
-{title:'1. Lesson Overview & Core Objectives',standard:'MN ELA 7.1.4.4 / 8.1.4.4',bullets:['Analyze how altering medial vowel phonemes reshapes CVC word structure.','Isolate middle vowel sounds to improve word analysis.','Practice structured one-on-one diagnostic conversations.'],callout:'A single vowel swap changes the auditory and semantic identity of a word.'},
-{title:'2. CVC Structure & Phoneme Isolation',standard:'MN ELA 7.1.4.4 / 8.1.4.4',bullets:['CVC means consonant-vowel-consonant.','Segment words into individual sound units: /k/ - /æ/ - /t/.','Initial and final consonants remain constant during substitution.'],callout:'The medial vowel is the vocal anchor of a CVC word.'},
-{title:'3. Isolating the Medial Vowel Sound',standard:'MN ELA 7.1.4.4 / 8.1.4.4',bullets:['Stretch the middle sound to isolate it.','Observe tongue height and lip rounding.','Say the isolated phoneme aloud during peer checks.'],callout:'Elongating the middle vowel makes identification easier.'},
-{title:'4. Short Vowel Phoneme Contrast',standard:'MN ELA 7.1.4.4 / 8.1.4.4',bullets:['Compare short A in BAT with short E in BET.','Contrast short I in BIT with short O in BOT.','Recognize the relaxed central position of short U in BUT.'],callout:'Small changes in mouth placement produce different vowel sounds.'},
-{title:'5. Medial Substitution: CAT to COT',standard:'MN ELA 7.1.4.4 / 8.1.4.4',bullets:['CAT is /k/ /æ/ /t/.','Replace /æ/ with short O while keeping /k/ and /t/ fixed.','COT has a new sound pattern and meaning.'],callout:'Changing one medial vowel transforms the word.'},
-{title:'6. Medial Substitution: COT to CUT',standard:'MN ELA 7.1.4.4 / 8.1.4.4',bullets:['COT is /k/ /ɑ/ /t/.','Swap /ɑ/ for short U.','CUT forms a new action word.'],callout:'Vowel substitution changes both pronunciation and meaning.'},
-{title:'7. One-on-One Peer Diagnostic',standard:'MN ELA 7.3.1.1 / 8.3.1.1',bullets:['Partner A reads target CVC pairs aloud.','Partner B listens for precise medial phonemes.','Discuss errors using descriptive feedback.'],callout:'Oral checks reveal decoding errors in real time.'},
-{title:'8. Word Chain Challenge: BUG → BAG → BEG → BIG',standard:'MN ELA 7.1.4.4 / 8.1.4.4',bullets:['Substitute one medial vowel at each step.','Keep the beginning and ending consonants stable.','Decode every link aloud with a partner.'],callout:'Multi-step substitutions test speed and phonological precision.'},
-{title:'9. Real and Nonsense Word Analysis',standard:'MN ELA 7.1.4.4 / 8.1.4.4',bullets:['Read real words such as LOG and LUG.','Decode pseudowords such as YEG and ZOP.','Apply sound-symbol rules regardless of familiarity.'],callout:'Pseudowords show whether a reader is truly decoding.'},
-{title:'10. Guided Diagnostic Discussion',standard:'MN ELA 7.3.1.1 / 8.3.1.1',bullets:['Explain how changing PIN to PAN changes sound and meaning.','Describe tongue and lip shifts.','Ask which vowel sound was substituted.'],callout:'Explaining sound mechanics deepens phonological comprehension.'},
-{title:'11. Rapid-Fire Vowel Swap',standard:'MN ELA 7.3.1.1 / 8.3.1.1',bullets:['A partner calls out a word and target vowel.','Produce the new word immediately.','Self-correct and track response time.'],callout:'Rapid responses indicate automatic medial phoneme processing.'},
-{title:'12. Diagnostic Reflection & Checkpoint',standard:'MN ELA 7.3.1.1 / 8.3.1.1',bullets:['Complete the Student Work Checkpoint.','Record your partner and discussion summary.','Select a mastery level and print your work.'],callout:'Written reflection consolidates oral diagnostic learning.'}],resources:[['MN ELA CVC Word Analysis Matrix','mn_cvc_word_analysis.pdf'],['One-on-One Oral Decoding Diagnostic Guide','oral_decoding_diagnostic_guide.pdf'],['CVC Word Pairs','cvc_word_pairs.pdf']]};
-let current=0;const $=id=>document.getElementById(id);function render(){const s=data.slides[current];$('stage').innerHTML=`<article class="slide active"><div class="slidehead"><h3>${s.title}</h3><span class="badge">${s.standard}</span></div><ul>${s.bullets.map(x=>`<li>${x}</li>`).join('')}</ul><div class="callout"><b>Key Takeaway:</b> ${s.callout}</div></article>`;$('count').textContent=`Slide ${current+1} of ${data.slides.length}`;$('prev').disabled=!current;$('next').disabled=current===data.slides.length-1}function prompt(){ $('prompt').textContent=data.bellringers[Math.floor(Math.random()*data.bellringers.length)] }data.resources.forEach(r=>$('resourceList').innerHTML+=`<div class="resource"><span><b>${r[0]}</b><br><small>${r[1]}</small></span><a class="control" href="${r[1]}">Open Resource</a></div>`);$('prev').onclick=()=>{if(current){current--;render()}};$('next').onclick=()=>{if(current<data.slides.length-1){current++;render()}};$('shuffle').onclick=prompt;document.querySelectorAll('[data-tab]').forEach(b=>b.onclick=()=>{document.querySelectorAll('.tabs button,.tab').forEach(x=>x.classList.remove('active'));b.classList.add('active');$(b.dataset.tab).classList.add('active')});
-const fields=[['Student Name','text'],['Diagnostic Partner / Instructor Name','text'],['Date','date'],["Explain how changing the medial vowel in PIN to A changes sound and meaning.",'text'],['Diagnostic Discussion Notes','textarea'],['Decoding Benchmark Rubric','select']];$('checkpoint').innerHTML=fields.map((f,i)=>`<div class="field"><label>${f[0]}</label>${f[1]==='textarea'?'<textarea rows="4" required></textarea>':f[1]==='select'?'<select required><option value="">-- Select Level --</option><option>Level 1 - Needs Support</option><option>Level 2 - Developing</option><option>Level 3 - Proficient</option><option>Level 4 - Advanced</option></select>`:`<input type="${f[1]}" required>`}</div>`).join('')+'<button class="submit" type="submit">Print this page and turn into the Red Basket!</button>';$('checkpoint').onsubmit=e=>{e.preventDefault();window.print()};render();prompt();
-</script></body></html>
+const data = {
+  bellringers: [
+    "Say the word 'CAT' aloud. If you change the middle sound from /æ/ to /o/, what new word do you make? How does your mouth position change?",
+    "Listen to these three words: PIN, PAN, PEN. What single letter position changes in each word, and how does it change the word's meaning?",
+    "Scenario: A reader pronounces 'LUG' as 'LOG'. What specific middle vowel sound did they misread, and how would you correct them?",
+    "Name the 5 short vowel sounds (/a/, /e/, /i/, /o/, /u/) and give one CVC example for each."
+  ],
+  slides: [
+    {title:'1. Lesson Overview & Core Objectives',standard:'MN ELA 7.1.4.4 / 8.1.4.4',bullets:['Analyze how altering medial vowel phonemes reshapes CVC word structure.','Isolate middle vowel sounds to improve word analysis.','Practice structured one-on-one diagnostic conversations.'],callout:'A single vowel swap changes the auditory and semantic identity of a word.'},
+    {title:'2. CVC Structure & Phoneme Isolation',standard:'MN ELA 7.1.4.4 / 8.1.4.4',bullets:['CVC means consonant-vowel-consonant.','Segment words into individual sound units: /k/ - /æ/ - /t/.','Initial and final consonants remain constant during substitution.'],callout:'The medial vowel is the vocal anchor of a CVC word.'},
+    {title:'3. Isolating the Medial Vowel Sound',standard:'MN ELA 7.1.4.4 / 8.1.4.4',bullets:['Stretch the middle sound to isolate it.','Observe tongue height and lip rounding.','Say the isolated phoneme aloud during peer checks.'],callout:'Elongating the middle vowel makes identification easier.'},
+    {title:'4. Short Vowel Phoneme Contrast',standard:'MN ELA 7.1.4.4 / 8.1.4.4',bullets:['Compare short A in BAT with short E in BET.','Contrast short I in BIT with short O in BOT.','Recognize the relaxed central position of short U in BUT.'],callout:'Small changes in mouth placement produce different vowel sounds.'},
+    {title:'5. Medial Substitution: CAT to COT',standard:'MN ELA 7.1.4.4 / 8.1.4.4',bullets:['CAT is /k/ /æ/ /t/.','Replace /æ/ with short O while keeping /k/ and /t/ fixed.','COT has a new sound pattern and meaning.'],callout:'Changing one medial vowel transforms the word.'},
+    {title:'6. Medial Substitution: COT to CUT',standard:'MN ELA 7.1.4.4 / 8.1.4.4',bullets:['COT is /k/ /ɑ/ /t/.','Swap /ɑ/ for short U.','CUT forms a new action word.'],callout:'Vowel substitution changes both pronunciation and meaning.'},
+    {title:'7. One-on-One Peer Diagnostic',standard:'MN ELA 7.3.1.1 / 8.3.1.1',bullets:['Partner A reads target CVC pairs aloud.','Partner B listens for precise medial phonemes.','Discuss errors using descriptive feedback.'],callout:'Oral checks reveal decoding errors in real time.'},
+    {title:'8. Word Chain Challenge: BUG → BAG → BEG → BIG',standard:'MN ELA 7.1.4.4 / 8.1.4.4',bullets:['Substitute one medial vowel at each step.','Keep the beginning and ending consonants stable.','Decode every link aloud with a partner.'],callout:'Multi-step substitutions test speed and phonological precision.'},
+    {title:'9. Real and Nonsense Word Analysis',standard:'MN ELA 7.1.4.4 / 8.1.4.4',bullets:['Read real words such as LOG and LUG.','Decode pseudowords such as YEG and ZOP.','Apply sound-symbol rules regardless of familiarity.'],callout:'Pseudowords show whether a reader is truly decoding.'},
+    {title:'10. Guided Diagnostic Discussion',standard:'MN ELA 7.3.1.1 / 8.3.1.1',bullets:['Explain how changing PIN to PAN changes sound and meaning.','Describe tongue and lip shifts.','Ask which vowel sound was substituted.'],callout:'Explaining sound mechanics deepens phonological comprehension.'},
+    {title:'11. Rapid-Fire Vowel Swap',standard:'MN ELA 7.3.1.1 / 8.3.1.1',bullets:['A partner calls out a word and target vowel.','Produce the new word immediately.','Self-correct and track response time.'],callout:'Rapid responses indicate automatic medial phoneme processing.'},
+    {title:'12. Diagnostic Reflection & Checkpoint',standard:'MN ELA 7.3.1.1 / 8.3.1.1',bullets:['Complete the Student Work Checkpoint.','Record your partner and discussion summary.','Select a mastery level and print your work.'],callout:'Written reflection consolidates oral diagnostic learning.'}
+  ],
+  resources: [
+    ['MN ELA CVC Word Analysis Matrix', 'mn_cvc_word_analysis.pdf'],
+    ['One-on-One Oral Decoding Diagnostic Guide', 'oral_decoding_diagnostic_guide.pdf'],
+    ['CVC Word Pairs', 'cvc_word_pairs.pdf']
+  ]
+};
+
+let current = 0;
+const $ = id => document.getElementById(id);
+
+function render() {
+  const s = data.slides[current];
+  $('stage').innerHTML = `
+    <article class="slide active">
+      <div class="slidehead">
+        <h3>${s.title}</h3>
+        <span class="badge">${s.standard}</span>
+      </div>
+      <ul style="margin-top:16px;line-height:1.6">${s.bullets.map(x => `<li>${x}</li>`).join('')}</ul>
+      <div class="callout"><b>Key Takeaway:</b> ${s.callout}</div>
+    </article>
+  `;
+  $('count').textContent = `Slide ${current + 1} of ${data.slides.length}`;
+  $('prev').disabled = current === 0;
+  $('next').disabled = current === data.slides.length - 1;
+}
+
+function prompt() {
+  $('prompt').textContent = data.bellringers[Math.floor(Math.random() * data.bellringers.length)];
+}
+
+// Populate Resources
+data.resources.forEach(r => {
+  $('resourceList').innerHTML += `
+    <div class="resource">
+      <span><b>${r[0]}</b><br><small class="muted">${r[1]}</small></span>
+      <a class="control" href="${r[1]}" target="_blank" rel="noopener">Open Resource</a>
+    </div>
+  `;
+});
+
+// Event Listeners
+$('prev').onclick = () => { if (current > 0) { current--; render(); } };
+$('next').onclick = () => { if (current < data.slides.length - 1) { current++; render(); } };
+$('shuffle').onclick = prompt;
+
+document.querySelectorAll('[data-tab]').forEach(b => {
+  b.onclick = () => {
+    document.querySelectorAll('.tabs button, .tab').forEach(x => x.classList.remove('active'));
+    b.classList.add('active');
+    $(b.dataset.tab).classList.add('active');
+  };
+});
+
+// Build Form
+const fields = [
+  ['Student Name', 'text'],
+  ['Diagnostic Partner / Instructor Name', 'text'],
+  ['Date', 'date'],
+  ['Explain how changing the medial vowel in PIN to A changes sound and meaning.', 'text'],
+  ['Diagnostic Discussion Notes', 'textarea'],
+  ['Decoding Benchmark Rubric', 'select']
+];
+
+$('checkpoint').innerHTML = fields.map((f, i) => `
+  <div class="field">
+    <label for="field_${i}">${f[0]}</label>
+    ${f[1] === 'textarea' 
+      ? `<textarea id="field_${i}" rows="4" required></textarea>` 
+      : f[1] === 'select' 
+      ? `<select id="field_${i}" required>
+          <option value="">-- Select Level --</option>
+          <option>Level 1 - Needs Support</option>
+          <option>Level 2 - Developing</option>
+          <option>Level 3 - Proficient</option>
+          <option>Level 4 - Advanced</option>
+         </select>`
+      : `<input id="field_${i}" type="${f[1]}" required>`
+    }
+  </div>
+`).join('') + '<button class="submit" type="submit">Print this page and turn into the Red Basket!</button>';
+
+$('checkpoint').onsubmit = e => {
+  e.preventDefault();
+  window.print();
+};
+
+render();
+prompt();
+</script>
+</body>
+</html>
