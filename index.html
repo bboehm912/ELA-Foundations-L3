@@ -347,7 +347,7 @@ $('checkpoint').innerHTML = fields.map((f, i) => `
       : `<input id="field_${i}" type="${f[1]}" required>`
     }
   </div>
-`).join('') + '<button class="submit" type="submit">Print Completed Work Checkpoint for Red Basket</button>';
+`).join('') + '<button class="submit" type="submit">Print this page and turn into the Red Basket!</button>';
 
 $('checkpoint').onsubmit = e => {
   e.preventDefault();
