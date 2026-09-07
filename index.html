@@ -65,10 +65,38 @@ input,textarea,select{width:100%;padding:10px;border:1px solid var(--border);bor
         </div>
       </div>
       <div>
-        <img src="boehm-stamp.svg" alt="Boehm Stamp" class="brand-stamp">
+        <!-- Header Card -->
+  <div class="header-card">
+    <div class="header-flex">
+      <div class="header-left">
+        <div class="logo-box">
+          <img src="Chisholmlogo.png" alt="Chisholm Logo" onerror="this.onerror=null; this.parentNode.innerHTML='<div style=\'background:#15803d;color:#fff;padding:12px;font-weight:bold;border-radius:6px;\'>CHS</div>';" />
+        </div>
+        <div>
+          <h2 style="margin: 0; font-size: 1.35em;">ELA Foundations — Week 1, Day 1</h2>
+          <p style="margin: 4px 0 0 0; color: var(--text-muted); font-size: 0.9em;">Course Orientation, Diagnostic Assessment &amp; O.T.I.S. Studio Framework</p>
+        </div>
+      </div>
+
+      <!-- Stamp Badge with Boehm Photo Centered Inside -->
+      <div class="stamp-container">
+        <img src="boehm_photo.jpg" alt="Mr. Boehm" class="stamp-photo" onerror="this.style.display='none';" />
+        <svg class="stamp-svg" viewBox="0 0 200 200">
+          <path id="textPathTop" d="M 25,100 A 75,75 0 1,1 175,100" fill="none" />
+          <path id="textPathBottom" d="M 175,100 A 75,75 0 0,1 25,100" fill="none" />
+          <circle cx="100" cy="100" r="95" fill="none" stroke="#15803d" stroke-width="4" />
+          <circle cx="100" cy="100" r="82" fill="none" stroke="#15803d" stroke-width="2" />
+          <circle cx="100" cy="100" r="58" fill="none" stroke="#15803d" stroke-width="2" stroke-dasharray="4,4" />
+          <text font-size="13" font-weight="bold" fill="#15803d" letter-spacing="2">
+            <textPath href="#textPathTop" startOffset="50%" text-anchor="middle">THE BOEHM CLASSROOM ★</textPath>
+          </text>
+          <text font-size="13" font-weight="bold" fill="#15803d" letter-spacing="2">
+            <textPath href="#textPathBottom" startOffset="50%" text-anchor="middle">CHISHOLM HIGH SCHOOL</textPath>
+          </text>
+        </svg>
       </div>
     </div>
-  </header>
+  </div>
   
   <nav class="tabs">
     <button class="active" data-tab="deck">Deck</button>
